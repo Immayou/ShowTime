@@ -1,15 +1,180 @@
-@import-normalize; /* bring in normalize.css styles */
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: SF_Pro;
+  src: url('../public/fonts/SF_Pro_Text_Regular.otf') format('opentype');
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  /* fonts */
+  --font-main: 'SF-Pro', sans-serif;
+
+  /* palette */
+  --colors-bg-title: rgba(229, 229, 229, 0.3);
+  --colors-bg-button: rgba(229, 229, 229, 1);
+  --colors-bg-sidebar: rgba(18, 18, 18, 1);
+  --colors-bg-header: rgba(18, 18, 18, 1);
+  --colors-bg-selectlist: rgba(18, 18, 18, 1);
+  --colors-text-title: rgba(229, 229, 229, 1);
+  --colors-text-label: rgba(250, 250, 250, 0.7);
+  --colors-text-input: rgba(250, 250, 250, 1);
+  --colors-text-navigation: rgba(250, 250, 250, 1);
+  --colors-text-placeholder: rgba(250, 250, 250, 0.3);
+  --colors-text-button: rgba(0, 0, 0, 1);
+  --colors-text-button-notactive: rgba(114, 114, 114, 1);
+  --colors-bg-listitem-active: rgba(33, 33, 33, 1);
+  --colors-bg-listitem-hover: rgba(52, 52, 52, 1);
+  --colors-bg-cover_image: rgba(33, 33, 33, 1);
+  --colors-border-button: rgba(52, 52, 52, 1);
+  --colors-bg: rgba(0, 0, 0, 1);
+  --colors-bg-cover_gif_image: rgba(166, 166, 166, 1);
+  --colors-error-text: rgba(255, 59, 48, 1);
+
+  --colors-text-primary: rgba(225, 225, 225, 1);
+  --colors-text-round-button: rgba(0, 0, 0, 1);
+  --colors-input-placeholder: rgba(255, 255, 255, 1);
+  --colors-line-bow: rgba(255, 255, 255, 1);
+
+  --colors-bg-main: rgba(0, 0, 0, 1);
+  --colors-bg-secondary: rgba(18, 18, 18, 1);
+
+  --colors-bg-paragraph-visited: rgba(18, 18, 18, 1);
+
+  --colors-bg-input: rgba(33, 33, 33, 1);
+
+  --colors-bg-item-layers: rgba(31, 31, 31, 1);
+  --colors-bg-item-layers-input: rgba(35, 35, 35, 1);
+
+  --colors-bg-item-property: rgba(33, 33, 33, 1);
+  --colors-bg-item-property-description: rgba(18, 18, 18, 1);
+
+  --colors-bg-round-button: rgba(229, 229, 229, 1);
+  --colors-bg-canvas-button: rgba(77, 77, 77, 1);
+
+  --colors-bg-item-fonts: rgba(18, 18, 18, 1);
+
+  --colors-bg-switch-button: rgba(217, 217, 217, 1);
+
+  /* border */
+  --colors-border-box: rgba(52, 52, 52, 1);
+  --colors-border-switch-button: rgba(255, 255, 255, 0.4);
+
+  /* shadows */
+  --shadow-options-box: 0px 4px 94px 0px var(--colors-bg-main);
+  --shadow-bow: 0px 3.857142925262451px 8.357142448425293px 0px
+    rgba(0, 0, 0, 0.12);
+
+  /* transition */
+  --time: 300ms;
+  --cubic: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: var(--time) var(--cubic);
+}
+
+body,
+html {
+  font-family: var(--font-main);
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgba(0, 0, 0, 1);
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+  background-color: var(--colors-bg-main);
+  color: var(--colors-text-primary);
+}
+ol,
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+  margin: 0;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+iframe {
+  background-color: #ffffff;
+}
+button {
+  padding: 0;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: var(--colors-text-round-button);
+  background-color: transparent;
+}
+
+a {
+  text-decoration: none;
+  color: var(--colors-text-primary);
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dragging {
+  opacity: 0.5;
+}
+
+.drag_over {
+  transform: scale(0.9);
 }
