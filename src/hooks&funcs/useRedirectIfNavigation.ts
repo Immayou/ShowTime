@@ -10,7 +10,7 @@ const useRedirectIfNavigation = () => {
       location.pathname === '/navigation' ||
       location.pathname === '/navigation/'
     ) {
-      navigate('/navigation/categories', { replace: true });
+      navigate('/navigation/users', { replace: true });
     }
   }, [location.pathname, navigate]);
 };

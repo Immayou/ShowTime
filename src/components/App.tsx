@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from '../hooks&funcs/redux';
 import { refreshUser } from '../store/slices/auth/operations';
 import Header from './Header/Header';
 import useRedirectIfNavigation from '../hooks&funcs/useRedirectIfNavigation';
+import SideBarNavigationPage from '../pages/SideBarNavigationPage/SideBarNavigationPage';
 
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 
@@ -30,7 +31,7 @@ export const App = () => {
             <Route
               index
               element={
-                <RestrictedRoute redirectTo="/navigation/start">
+                <RestrictedRoute redirectTo="/navigation/users">
                   <LoginPage />
                 </RestrictedRoute>
               }
@@ -38,7 +39,7 @@ export const App = () => {
             <Route
               path="/login"
               element={
-                <RestrictedRoute redirectTo="/navigation/start">
+                <RestrictedRoute redirectTo="/navigation/users">
                   <LoginPage />
                 </RestrictedRoute>
               }
@@ -47,11 +48,11 @@ export const App = () => {
               path="/navigation"
               element={
                 <PrivateRoute redirectTo="/login">
-                  <div>Login</div>
+                  <SideBarNavigationPage />
                 </PrivateRoute>
               }
             >
-              <Route path="start" element={<div>Start</div>} />
+              <Route path="users" element={<div>Start</div>} />
             </Route>
             <Route path="*" element={<p>Not found</p>} />
           </Route>

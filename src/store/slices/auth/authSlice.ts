@@ -20,9 +20,6 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     toggleProdTestServer(state, action) {
-      // const PROD = 'https://prod.7element.net/api';
-      // const TEST = 'https://test.7element.net/api';
-      // const TEST2 = 'http://134.249.167.199:5001/api';
       state.isProdServerActive = action.payload;
       state.baseProdUrl = action.payload ? PROD : TEST;
       state.isLoading = false;
