@@ -1,14 +1,11 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks&funcs/redux';
 import { RootState } from '../../store/store';
 import useWindowDimensions from '../../hooks&funcs/useWindowDimensions';
-import styled from 'styled-components';
 import MainWrapper from '../../components/PageWrapper/PageWrapper';
 
 import {
   Content,
-  Input,
-  TableContent,
   TableHeading,
   TableRow,
   TableRowHead,

@@ -5,3 +5,13 @@ export enum InputTypes {
   PASSWORD = 'password',
   READ_ONLY = 'read_only',
 }
+
+export enum UserTypes {
+  REGULAR = 'regular',
+  ARTIST = 'artist',
+}
+
+export enum FielsdOfActivityTypes {
+  SINGING = 'singing',
+  DANCING = 'dancing',
+}

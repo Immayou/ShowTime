@@ -6,14 +6,6 @@ export interface IApiResponse {
   data: null | any;
 }
 
-interface UploadResult {
-  Location: string;
-  Key: string;
-  Bucket: string;
-  key: string;
-  ETag: string;
-}
-
 export const PROD = 'https://prod.7element.net/api';
 export const TEST = 'https://test.7element.net/api';
 export const TEST2 = 'http://134.249.167.199:5001/api';
@@ -44,27 +36,5 @@ export const initAws = () => {
 
   if (!accessKeyId || !secretAccessKey) {
     throw new Error('AWS облікові дані не встановлені');
-  }
-};
-
-export const axiosExecute = async (): Promise<IApiResponse> => {
-  try {
-    const { data } = await apiMainUrl.post<IApiResponse>(
-      `/Commander/Execute`,
-      {
-        controller: 'app',
-        action: 'bucket',
-        row_data: null,
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    );
-    return data;
-  } catch (error: any) {
-    console.log(error.message);
-    throw new Error(error.message);
   }
 };

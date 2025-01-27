@@ -10,6 +10,7 @@ import { refreshUser } from '../store/slices/auth/operations';
 import Header from './Header/Header';
 import useRedirectIfNavigation from '../hooks&funcs/useRedirectIfNavigation';
 import SideBarNavigationPage from '../pages/SideBarNavigationPage/SideBarNavigationPage';
+import UsersPage from '../pages/UsersPage/UsersPage';
 
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 
@@ -52,7 +53,7 @@ export const App = () => {
                 </PrivateRoute>
               }
             >
-              <Route path="users" element={<div>Start</div>} />
+              <Route path="users" element={<UsersPage />} />
             </Route>
             <Route path="*" element={<p>Not found</p>} />
           </Route>

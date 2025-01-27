@@ -11,20 +11,20 @@ interface MainWrapperProps {
 }
 
 const MainWrapper: React.FC<MainWrapperProps> = ({ children, title }) => {
-  const { bucket, baseProdUrl } = useAppSelector(
-    (state: RootState) => state.auth
-  );
+  // const { bucket, baseProdUrl } = useAppSelector(
+  //   (state: RootState) => state.auth
+  // );
 
   return (
     <PageWrapper>
       <TopWrapper>
         <Title>{title}</Title>
-        <div>
+        {/* <div>
           <p>Bucket: {bucket}</p>
           <p>WebServer: {REACT_APP_ADMIN_API_URL}</p>
           <p>AuthServer: {REACT_APP_TEST_API_URL}</p>
           <p>ProdServer: {baseProdUrl}</p>
-        </div>
+        </div> */}
       </TopWrapper>
       {children}
     </PageWrapper>
