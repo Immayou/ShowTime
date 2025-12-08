@@ -1,39 +1,25 @@
 import axios from 'axios';
-import { Credentials } from '../store/slices/auth/types';
+import { ContestantModel, LoginDataRequest } from '../store/slices/auth/types';
 import { logOut } from '../store/slices/auth/operations';
 import store from '../store/store';
 
-export const REACT_APP_ADMIN_API_URL = 'https://webapp.7element.net';
-export const REACT_APP_TEST_API_URL = 'https://authtest.7element.net';
-// 'http://134.249.167.199:5005'
-// 'https://prod.7element.net/api'
-// 'https://webapp.7element.net'
-// 'http://3.79.159.166:5015'
+export const base_URL = 'https://test.showon.net';
 export const instance = axios.create({
-  // baseURL: process.env.REACT_APP_ADMIN_API_URL,
-  baseURL: REACT_APP_ADMIN_API_URL,
-});
-
-export const presetsInstance = axios.create({
-  // baseURL: process.env.REACT_APP_TEST_API_URL,
-  baseURL: REACT_APP_TEST_API_URL,
+  baseURL: base_URL,
 });
 
 const token = {
   set(accessToken: string) {
     delete instance.defaults.headers.Authorization;
     instance.defaults.headers.Authorization = `Bearer ${accessToken}`;
-    delete presetsInstance.defaults.headers.Authorization;
-    presetsInstance.defaults.headers.Authorization = `Bearer ${accessToken}`;
   },
   unset() {
     delete instance.defaults.headers.Authorization;
-    delete presetsInstance.defaults.headers.Authorization;
   },
 };
 
 export async function getAuthDataFromLocalStorage() {
-  const dataFromLocalStorage = localStorage.getItem('7-element.authData');
+  const dataFromLocalStorage = localStorage.getItem('show_on.authData');
 
   if (dataFromLocalStorage) {
     return JSON.parse(dataFromLocalStorage);
@@ -57,16 +43,19 @@ const errorInterceptor = async (error: any) => {
 };
 
 instance.interceptors.response.use(responseInterceptor, errorInterceptor);
-presetsInstance.interceptors.response.use(
-  responseInterceptor,
-  errorInterceptor
-);
 
-export const axiosLogin = async (userData: Credentials) => {
+export const axiosLogin = async (userData: ContestantModel) => {
   try {
-    const { data } = await instance.post('/api/WebApp/Login', userData);
+    const { data } = await instance.post('/api/User/Login', userData);
     if (data.success) {
-      token.set(data.data.token);
+      const authData = {
+        token: data.data.user.token,
+        user: data.data.user,
+        loginTime: Date.now(),
+      };
+      console.log(data);
+      localStorage.setItem('showOn.authData', JSON.stringify(authData));
+      token.set(data.data.user.token);
       return data;
     }
     throw new Error(data.msg);
@@ -77,17 +66,24 @@ export const axiosLogin = async (userData: Credentials) => {
 
 export const axiosLogout = async () => {
   // const { data } = await instance.post("/api/WebApp/Logout");
-  localStorage.removeItem('7-element.authData');
+  localStorage.removeItem('showOn.authData');
   token.unset();
   return { isLoggedIn: false };
 };
 
 export const axiosRefreshUser = async () => {
   const authData = await getAuthDataFromLocalStorage();
-  if (authData && authData.token) {
+  if (authData?.token) {
     token.set(authData.token);
     return authData;
   } else {
     token.unset();
   }
+};
+
+export const axiosDeleteAccount = async () => {
+  const { data } = await instance.get('/api/User/DeleteUser');
+  axiosLogout();
+  console.log(data);
+  return data;
 };

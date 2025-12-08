@@ -6,6 +6,9 @@ export const InputWrapper = styled.div<{ width?: number }>`
   display: flex;
   flex-direction: column;
   position: relative;
+  border-radius: 12px;
+  border: 1px solid grey;
+  overflow: hidden;
   &:not(:last-child) {
     margin-right: 10px;
   }
@@ -14,7 +17,7 @@ export const InputWrapper = styled.div<{ width?: number }>`
 export const Input = styled.input`
   width: 100%;
   height: 42px;
-  background-color: #212121;
+  background-color: 'transparent';
   padding-left: 16px;
   padding-right: 16px;
   flex-shrink: 0;

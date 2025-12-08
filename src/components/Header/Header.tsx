@@ -34,15 +34,8 @@ const Header: React.FC<IHeaderProps> = () => {
 
   return (
     <Wrapper>
-      <HeaderTag>
-        {isLoggedIn ? (
-          <RoundButton value="Logout" handler={onLogoutHandler} />
-        ) : (
-          <RoundButton
-            value={isProdServerActive ? 'ProdServer' : 'TestServer'}
-            handler={onToggleProdServerHandler}
-          />
-        )}
+      <HeaderTag $isLoggined={isLoggedIn}>
+        <RoundButton value="Logout" handler={onLogoutHandler} />
       </HeaderTag>
       <Outlet />
     </Wrapper>

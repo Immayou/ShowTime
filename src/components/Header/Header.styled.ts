@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   padding: 7px 12px 12px 12px;
 `;
 
-export const HeaderTag = styled.header`
+export const HeaderTag = styled.header<{ $isLoggined: boolean }>`
   position: absolute;
   top: 7px;
   left: 50%;
@@ -16,7 +16,7 @@ export const HeaderTag = styled.header`
   padding: 0 72px 0 24px;
   width: calc(100% - (24px));
   height: 68px;
-  display: flex;
+  display: ${({ $isLoggined }) => ($isLoggined ? 'flex' : 'none')};
   align-items: center;
   justify-content: flex-end;
   border-radius: 12px;

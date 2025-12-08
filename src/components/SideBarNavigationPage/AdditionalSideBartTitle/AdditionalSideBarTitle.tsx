@@ -1,7 +1,7 @@
 import React from 'react';
 import sprite from '../../../sprite/sprite.svg';
 import { useNavigate } from 'react-router-dom';
-import { setIsOpenAddCategoryModal } from '../../../store/slices/modals/modalsSlice';
+import { setIsOpenModal } from '../../../store/slices/modals/modalsSlice';
 import {
   AddButton,
   AddIcon,
@@ -36,10 +36,7 @@ const AdditionalSideBarTitle: React.FC<AdditionalSideBarTitleProps> = ({
         </AddButton>
         <MenuTitle>{title}</MenuTitle>
       </TopLeftWrapper>
-      <AddButton
-        type="button"
-        onClick={() => dispatch(setIsOpenAddCategoryModal())}
-      >
+      <AddButton type="button" onClick={() => dispatch(setIsOpenModal())}>
         <AddIcon width="17" height="17" href={`${sprite}#icon-add`} />
       </AddButton>
     </TitleWrapper>

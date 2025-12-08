@@ -9,31 +9,41 @@
 
   /* palette */
   --colors-bg-title: rgba(229, 229, 229, 0.3);
-  --colors-bg-button: rgba(229, 229, 229, 1);
+  --colors-bg-button: 'transparent';
+  --colors-bg-button-active: linear-gradient(
+    90deg,
+    #72ffb6 0%,
+    #d1fc57 50%,
+    #ffdc2f 100%
+  );
+  --colors-border-btn: rgba(0, 0, 0, 1);
+  --colors-border-accent-button: linear-gradient(
+    90deg,
+    #d1fc57 0%,
+    #3760f9 50%,
+    #de006f 100%
+  );
   --colors-bg-sidebar: rgba(18, 18, 18, 1);
   --colors-bg-header: rgba(18, 18, 18, 1);
   --colors-bg-selectlist: rgba(18, 18, 18, 1);
-  --colors-text-title: rgba(229, 229, 229, 1);
+  --colors-text-title: rgba(0, 0, 0, 1);
   --colors-text-label: rgba(250, 250, 250, 0.7);
-  --colors-text-input: rgba(250, 250, 250, 1);
+  --colors-text-input: rgba(0, 0, 0, 1);
   --colors-text-navigation: rgba(250, 250, 250, 1);
   --colors-text-placeholder: rgba(250, 250, 250, 0.3);
   --colors-text-button: rgba(0, 0, 0, 1);
-  --colors-text-button-notactive: rgba(114, 114, 114, 1);
+  --colors-text-button-notactive: rgba(0, 0, 0, 1);
   --colors-bg-listitem-active: rgba(33, 33, 33, 1);
   --colors-bg-listitem-hover: rgba(52, 52, 52, 1);
   --colors-bg-cover_image: rgba(33, 33, 33, 1);
-  --colors-border-button: rgba(52, 52, 52, 1);
-  --colors-bg: rgba(0, 0, 0, 1);
+  --colors-bg: rgba(255, 255, 255, 1);
   --colors-bg-cover_gif_image: rgba(166, 166, 166, 1);
   --colors-error-text: rgba(255, 59, 48, 1);
 
-  --colors-text-primary: rgba(225, 225, 225, 1);
-  --colors-text-round-button: rgba(0, 0, 0, 1);
-  --colors-input-placeholder: rgba(255, 255, 255, 1);
-  --colors-line-bow: rgba(255, 255, 255, 1);
+  --colors-text-primary: rgba(83, 88, 98, 1);
+  --colors-input-placeholder: rgb(10, 2, 2);
 
-  --colors-bg-main: rgba(0, 0, 0, 1);
+  --colors-bg-main: rgba(255, 255, 255, 1);
   --colors-bg-secondary: rgba(18, 18, 18, 1);
 
   --colors-bg-paragraph-visited: rgba(18, 18, 18, 1);
@@ -45,11 +55,6 @@
 
   --colors-bg-item-property: rgba(33, 33, 33, 1);
   --colors-bg-item-property-description: rgba(18, 18, 18, 1);
-
-  --colors-bg-round-button: rgba(229, 229, 229, 1);
-  --colors-bg-canvas-button: rgba(77, 77, 77, 1);
-
-  --colors-bg-item-fonts: rgba(18, 18, 18, 1);
 
   --colors-bg-switch-button: rgba(217, 217, 217, 1);
 

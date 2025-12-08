@@ -1,10 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { axiosLogin, axiosLogout, axiosRefreshUser } from '../../../api/auth';
-import { IError, Credentials, LoginData } from './types';
+import {
+  IError,
+  LoginDataRequest,
+  IUserWithToken,
+  ContestantModel,
+} from './types';
 
 export const login = createAsyncThunk<
-  LoginData,
-  Credentials,
+  IUserWithToken,
+  ContestantModel,
   {
     rejectValue: IError;
   }
@@ -12,13 +17,8 @@ export const login = createAsyncThunk<
   try {
     const data = await axiosLogin(credentials);
     if (data.success) {
-      const authData = {
-        token: data.data.token,
-        name: data.data.name,
-        loginTime: Date.now(),
-      };
-      localStorage.setItem('7-element.authData', JSON.stringify(authData));
-      return data.data as LoginData;
+      console.log('login', data.data);
+      return data.data as IUserWithToken;
     } else {
       throw new Error('Something went wrong ,' + data.msg);
     }
@@ -42,15 +42,33 @@ export const logOut = createAsyncThunk<
   }
 });
 
-export const refreshUser = createAsyncThunk<
-  LoginData,
-  void,
-  { rejectValue: IError }
->('auth/refresh', async (_, thunkAPI) => {
-  try {
-    const data = await axiosRefreshUser();
-    return data;
-  } catch (error: any) {
-    return thunkAPI.rejectWithValue({ errorMessage: error.message });
+export const refreshUser = createAsyncThunk<any, void, { rejectValue: IError }>(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    try {
+      const data = await axiosRefreshUser();
+      return data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue({ errorMessage: error.message });
+    }
   }
-});
+);
+
+// export const deleteAccount = createAsyncThunk<
+//   void,
+//   void,
+//   {
+//     rejectValue: IError;
+//   }
+// >('delete/account', async (_, thunkAPI) => {
+//   try {
+//     const data = await axiosDeleteAccount();
+//     if (data.success) {
+//       return;
+//     } else {
+//       throw new Error('Something went wrong ,' + data.msg);
+//     }
+//   } catch (error: any) {
+//     return thunkAPI.rejectWithValue({ errorMessage: error.message });
+//   }
+// });

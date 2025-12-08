@@ -53,38 +53,28 @@ const Button = styled.button<{
   padding-bottom: ${props => `${props.$paddingTop}px`};
   padding-left: ${props => `${props.$paddingLeft}px`};
   padding-right: ${props => `${props.$paddingLeft}px`};
-  background-color: ${props => (props.$isActive ? '#e5e5e5' : 'transparent')};
+  background-image: ${props =>
+    props.$isActive
+      ? 'var(--colors-bg-button-active)'
+      : 'var(--colors-bg-button)'};
   border-radius: 72px;
   color: ${props =>
     props.$isActive ? 'black' : 'var(--colors-text-button-notactive)'};
   outline: none;
-  border: ${props => (props.$isActive ? 'none' : '0.5px solid #343434')};
+  border: ${props =>
+    props.$isActive
+      ? '2px solid var(--colors-border-accent-button)'
+      : '2px solid var(--colors-border-btn)'};
   font-family: var(--font-main);
   font-weight: bold;
   opacity: ${props => (props.$isDisabled ? 0.6 : 1)};
   cursor: pointer;
-  border: 0.5px solid transparent;
-  transition: background-color var(--transition), font-family var(--transition),
-    border var(--transition), color var(--transition);
+  transition: background-image var(--transition), border var(--transition),
+    color var(--transition);
 
   &:hover {
-    border: 0.5px solid transparent;
-    background-color: #8f9191;
-    font-family: var(--font-main);
+    border: 2px solid transparent;
+    background-image: var(--colors-bg-button-active);
     color: var(--colors-text-button);
   }
-
-  ${props =>
-    !props.$isActive &&
-    `
-    background-color: transparent;
-    border: 0.5px solid #343434;
-    color: var(--colors-text-button-notactive);
-    font-family: var(--font-main);
-    transition: background-color var(--transition);
-
-    &:hover {
-      background-color: #8f9191;
-    }
-  `}
 `;
