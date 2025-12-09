@@ -116,80 +116,90 @@ const LoginPage = () => {
           />
         </div>
         <ContentBox>
-          <TextBox>
-            <TopText>
-              <NavBtn
-                $isActive={mode === 'signup'}
-                onClick={() => setMode('signup')}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <TextBox>
+              <TopText>
+                <NavBtn
+                  $isActive={mode === 'signup'}
+                  onClick={() => setMode('signup')}
+                >
+                  Sign up
+                </NavBtn>{' '}
+                or{' '}
+                <NavBtn
+                  $isActive={mode === 'login'}
+                  onClick={() => setMode('login')}
+                >
+                  login
+                </NavBtn>{' '}
+                to start the show
+              </TopText>
+              <Form
+                $isVisible={mode === 'signup'}
+                name="login_form"
+                autoComplete="off"
+                onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+                  e.preventDefault();
+                }}
               >
-                Sign up
-              </NavBtn>{' '}
-              or{' '}
-              <NavBtn
-                $isActive={mode === 'login'}
-                onClick={() => setMode('login')}
-              >
-                login
-              </NavBtn>{' '}
-              to start the show
-            </TopText>
-
-            <Form
-              name="login_form"
-              autoComplete="off"
-              onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-                e.preventDefault();
-              }}
-            >
-              {mode === 'signup' && (
-                <>
-                  <InputWrapper>
-                    <Label htmlFor="name">Name</Label>
-                    <CustomInput
-                      id="name"
-                      width={100}
-                      value={name}
-                      placeholder="Enter name"
-                      maxLength={100}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                        setName(e.target.value)
-                      }
-                    />
-                  </InputWrapper>
-                  <InputWrapper>
-                    <Label htmlFor="nickname">Nickname</Label>
-                    <CustomInput
-                      id="nickname"
-                      width={100}
-                      value={nickname}
-                      placeholder="Enter nickname"
-                      maxLength={100}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                        setNickname(e.target.value)
-                      }
-                    />
-                  </InputWrapper>
-                  <InputWrapper>
-                    <Label htmlFor="description">Description</Label>
-                    <CustomInput
-                      id="description"
-                      width={100}
-                      value={description}
-                      placeholder="Enter description"
-                      maxLength={100}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                        setDescription(e.target.value)
-                      }
-                    />
-                  </InputWrapper>
-                </>
-              )}
-            </Form>
+                {mode === 'signup' && (
+                  <>
+                    <InputWrapper>
+                      <Label htmlFor="name">Name</Label>
+                      <CustomInput
+                        id="name"
+                        width={100}
+                        value={name}
+                        placeholder="Enter name"
+                        maxLength={100}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                          setName(e.target.value)
+                        }
+                      />
+                    </InputWrapper>
+                    <InputWrapper>
+                      <Label htmlFor="nickname">Nickname</Label>
+                      <CustomInput
+                        id="nickname"
+                        width={100}
+                        value={nickname}
+                        placeholder="Enter nickname"
+                        maxLength={100}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                          setNickname(e.target.value)
+                        }
+                      />
+                    </InputWrapper>
+                    <InputWrapper>
+                      <Label htmlFor="description">Description</Label>
+                      <CustomInput
+                        id="description"
+                        width={100}
+                        value={description}
+                        placeholder="Enter description"
+                        maxLength={100}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                          setDescription(e.target.value)
+                        }
+                      />
+                    </InputWrapper>
+                  </>
+                )}
+              </Form>
+            </TextBox>
             <div
               style={{
                 width: '100%',
                 display: 'flex',
                 justifyContent: 'space-around',
+                marginTop: '30px',
               }}
             >
               <RoundButton
@@ -210,7 +220,7 @@ const LoginPage = () => {
                 handler={handleAppleLogin}
               />
             </div>
-          </TextBox>
+          </div>
           <BottomTextWrapper>
             <p>By signing up, you agree to our &nbsp;</p>
             <span

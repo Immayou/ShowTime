@@ -22,7 +22,7 @@ export const TextBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 100%;
 `;
 
 export const InputWrapper = styled.div`
@@ -50,7 +50,6 @@ export const TopText = styled.p`
   font-weight: 500;
   font-size: 25px;
   line-height: 1.3;
-  margin-bottom: 33px;
   color: var(--text-title);
   text-align: center;
 `;
@@ -67,19 +66,20 @@ export const BottomTextWrapper = styled.div`
   font-size: 14px;
   line-height: 1.2;
   letter-spacing: -0.24px;
+
   & a {
     font-weight: 600;
     text-decoration: underline;
   }
 `;
 
-export const Form = styled.form`
+export const Form = styled.form<{ $isVisible: boolean }>`
   width: 100%;
-  display: flex;
+  display: ${({ $isVisible }) => ($isVisible ? 'flex' : 'none')};
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 30px;
+  margin-top: 30px;
 `;
 
 export const NavBtn = styled.span<{ $isActive: boolean }>`
