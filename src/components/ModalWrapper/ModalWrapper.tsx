@@ -3,7 +3,10 @@ import { createPortal } from 'react-dom';
 import styled, { keyframes } from 'styled-components';
 import { useAppSelector, useAppDispatch } from '../../hooks&funcs/redux';
 import { RootState } from '../../store/store';
-import { closeAnimationModals } from '../../store/slices/modals/modalsSlice';
+import {
+  closeAnimationModals,
+  setIsCloseModal,
+} from '../../store/slices/modals/modalsSlice';
 import { anulateNotificationData } from '../../store/slices/notifications/notificationsSlice';
 import RoundButton from '../RoundButton/RoundButton';
 
@@ -120,6 +123,7 @@ const ModalWrapper: React.FC<IModalWrapperProps> = ({
   }, []);
 
   const handleClose = () => {
+    dispatch(setIsCloseModal());
     dispatch(closeAnimationModals());
     dispatch(anulateNotificationData());
   };

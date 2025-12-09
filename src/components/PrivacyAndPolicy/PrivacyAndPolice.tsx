@@ -13,11 +13,11 @@ const PrivacyAndPolicy: React.FC<PrivacyAndPolicyProps> = ({ height }) => {
       style={{ margin: '0 auto', paddingBottom: '40px' }}
     >
       <ParagpaphWrapper>
-        <Title>7Element TERMS OF USE & PRIVACY POLICY</Title>
+        <Title>ShowOn TERMS OF USE & PRIVACY POLICY</Title>
         <Paragraph>
-          Dmytro Stepanenko created the “7Element” app as a Freemium app. This
-          SERVICE is provided by Dmytro Stepanenko free of charge and is
-          intended to be used “as is”.
+          Maksym Bukshovan created the "ShowOn" app as a Freemium app. This
+          SERVICE is provided by Maksym Bukshovan free of charge and is intended
+          to be used “as is”.
         </Paragraph>
       </ParagpaphWrapper>
       <Paragraph style={{ marginBottom: '18px' }}>
@@ -42,12 +42,12 @@ const PrivacyAndPolicy: React.FC<PrivacyAndPolicyProps> = ({ height }) => {
       </ParagpaphWrapper>
       <Title>USER LICENSE</Title>
       <Paragraph>
-        7Element grants the User a non-exclusive, non-transferable, revocable
+        ShowOn grants the User a non-exclusive, non-transferable, revocable
         personal limited license on the App for personal, private,
         non-commercial use thereof, limited in all cases to the terms described
         in these Terms of Use. This license shall be restricted to the period
         set forth in these Terms of Use and shall be subject to the territorial
-        availability of the App. Notwithstanding the above, 7Element can rescind
+        availability of the App. Notwithstanding the above, ShowOn can rescind
         or revoke this license at any time.
       </Paragraph>
       <Paragraph>
@@ -92,7 +92,6 @@ export default PrivacyAndPolicy;
 const Title = styled.p`
   font-weight: 700;
   line-height: 1.25;
-  color: var(--text-content);
   text-align: start;
 `;
 
